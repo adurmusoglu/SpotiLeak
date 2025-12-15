@@ -2,7 +2,7 @@
 
 A native desktop app that helps you take local music files and make them usable in Spotify via Local Files.
 
-You search for a song, preview it on YouTube to confirm it's the right one, then import an audio file for the . SpotiLeak automatically:
+You search for a song, preview it on YouTube to confirm it's the right one, then the app imports a MP3 file for the song. SpotiLeak automatically:
 
 - **Finds the song you want on YouTube**
 - **Gives you the option to download the song or keep searching if desired**

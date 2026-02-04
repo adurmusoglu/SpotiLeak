@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Ali Durmusoglu", email = "adurmusoglu@gmail.com"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -45,12 +45,12 @@ dev = [
 spotileak = "spotileak.app:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/SpotiLeak"
-Repository = "https://github.com/yourusername/SpotiLeak"
+Homepage = "https://github.com/adurmusoglu/SpotiLeak"
+Repository = "https://github.com/adurmusoglu/SpotiLeak"
 Issues = "https://github.com/yourusername/SpotiLeak/issues"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 
 [tool.black]
 line-length = 88

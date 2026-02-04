@@ -1,0 +1,12 @@
+{
+  "name": "spotileak",
+  "private": true,
+  "scripts": {
+    "install:all": "pip install -e . && cd frontend && npm install",
+    "dev": "concurrently \"uvicorn backend.main:app --reload\" \"cd frontend && npm start\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

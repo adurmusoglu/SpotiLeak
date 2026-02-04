@@ -1,63 +1,16 @@
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "spotileak"
 version = "0.1.0"
-description = "A native desktop app that helps you take local music files and make them usable in Spotify via Local Files"
-readme = "README.md"
-requires-python = ">=3.10"
-license = {text = "MIT"}
-authors = [
-    {name = "Your Name", email = "your.email@example.com"}
-]
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Topic :: Multimedia :: Sound/Audio",
-]
-
 dependencies = [
-    "PySide6>=6.5.0",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0", 
+    "yt-dlp>=2023.12.30",
     "mutagen>=1.47.0",
-    "Pillow>=10.0.0",
-    "requests>=2.31.0",
-    "python-dotenv>=1.0.0",
+    "google-api-python-client>=2.108.0"
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0.0",
-    "pytest-qt>=4.2.0",
-    "black>=23.0.0",
-    "flake8>=6.0.0",
-    "mypy>=1.5.0",
-]
+[tool.setuptools]
+packages = ["backend"]
 
-[project.scripts]
-spotileak = "spotileak.app:main"
-
-[project.urls]
-Homepage = "https://github.com/yourusername/SpotiLeak"
-Repository = "https://github.com/yourusername/SpotiLeak"
-Issues = "https://github.com/yourusername/SpotiLeak/issues"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.black]
-line-length = 88
-target-version = ['py310']
-
-[tool.mypy]
-python_version = "3.10"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = true
+[build-system]
+requires = ["setuptools", "wheel"]

@@ -25,14 +25,14 @@ cd frontend && npm install
 
 ## Usage
 
-**Option 1 - npm script:**
-```bash
-npm run dev
-```
-
-**Option 2 - shell script:**
+**Option 1 - shell script:**
 ```bash
 ./start.sh
+```
+
+**Option 2 - npm script:**
+```bash
+npm run dev
 ```
 
 Both start backend (http://localhost:8000) and frontend (http://localhost:3000)

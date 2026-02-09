@@ -12,7 +12,7 @@ function App(): React.JSX.Element {
     <div className="container">
       <div className="hero">
         <h1>SpotiLeak</h1>
-        <TypingText lines={heroLines} speed={30} className="hero-text" />
+        <TypingText lines={heroLines} speed={25} className="hero-text" />
       </div> 
 
       <div className="search-container">

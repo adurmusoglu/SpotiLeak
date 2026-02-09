@@ -14,7 +14,9 @@ body {
 .container {
     text-align: center;
     min-height: 100vh;
-    background: linear-gradient(135deg,  #0d5e2e 0%, #0f0f0f 100%); /* Spotify colors */
+    background: linear-gradient(135deg, #022a12 0%, #0f0f0f 100%);
+    background-repeat: repeat;
+    background-size: cover, 200px 200px;
     color: #f2f0ef;
     display: flex;
     flex-direction: column;
@@ -23,6 +25,39 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('./assets/topography.svg');
+    background-repeat: repeat;
+    background-size: 350px 350px;
+    opacity: 0.3;
+    filter: brightness(0) saturate(100%) invert(34%) sepia(98%) saturate(495%) hue-rotate(63deg) brightness(95%) contrast(90%);
+    z-index: 0;
+    animation: greenPulse 12s ease-in-out infinite;
+}
+
+@keyframes greenPulse {
+    0% { 
+        filter: brightness(0) saturate(100%) invert(34%) sepia(98%) saturate(495%) hue-rotate(63deg) brightness(95%) contrast(90%);
+        opacity: 0.2;
+    }
+    50% { 
+        filter: brightness(0.1) saturate(100%) invert(34%) sepia(98%) saturate(495%) hue-rotate(63deg) brightness(95%) contrast(90%);
+        opacity: 0.6;
+    }
+    100% { 
+        filter: brightness(0) saturate(100%) invert(34%) sepia(98%) saturate(495%) hue-rotate(63deg) brightness(95%) contrast(90%);
+        opacity: 0.2;
+    }
 }
 
 /* Hero */
@@ -45,6 +80,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero:hover {

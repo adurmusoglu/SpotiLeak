@@ -3,14 +3,46 @@ import "./App.css";
 import TypingText from "./components/TypingText.tsx";
 import SearchInput from "./components/SearchInput.tsx";
 
+
 function App(): React.JSX.Element {
   console.log("App component is rendering");
   const [artistQuery, setArtistQuery] = useState('');
   const [songQuery, setSongQuery] = useState('');
+
   const heroLines: string[] = [
     "Ever heard a song on social media that wasn't on Spotify?",
     "Listen to all the songs you love with SpotiLeak!"
   ]
+
+  // Handles the UI serach interactions for song/artist names
+  const handleSearch = async () => {
+    // Basic validation 
+    if (!songQuery.trim()) {
+      alert("Song name is required!");
+      return;
+    }
+
+    console.log("Sending search request:", {artist: artistQuery, song: songQuery });
+
+    try {
+      // Send search request to backend
+      const response = await fetch("http://localhost:8000/api/search",{
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          artist: artistQuery.trim(),
+          song: songQuery.trim()
+        })
+      });
+
+      console.log("Response status:", response.status);
+      const data = await response.json();
+      console.log("Response data:", data);
+
+    } catch (err) {
+      console.error("Search request failed", err);
+    } 
+  }
   return (
     <div className="container">
       <div className="hero">
@@ -21,7 +53,7 @@ function App(): React.JSX.Element {
       <div className="search-container">
         <SearchInput type="artist" value={artistQuery} onChange={setArtistQuery} />
         <SearchInput type="song" value={songQuery} onChange={setSongQuery} />
-        <button className="btn-search">Search</button>
+        <button className="btn-search" onClick={handleSearch}>Search</button>
       </div>
       
       <div className="helper-info">

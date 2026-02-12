@@ -10,8 +10,9 @@ function App(): React.JSX.Element {
   // Handles data search queries
   const [artistQuery, setArtistQuery] = useState('');
   const [songQuery, setSongQuery] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
   let search_data: any = null;
-  let query_id: number = 0;     // Idempotent API requests
+  let query_id: number = 0;  
 
   // Customizable hero text with animation
   const heroLines: string[] = [
@@ -21,6 +22,9 @@ function App(): React.JSX.Element {
 
   // Handles the UI serach interactions for song/artist names
   const handleSearch = async () => {
+    // Prevents double-click searches
+    if (isSearching) { return; }
+    setIsSearching(true);
     // Basic validation 
     if (!songQuery.trim()) {
       alert("Song name is required!");
@@ -41,14 +45,15 @@ function App(): React.JSX.Element {
           query_id: query_id++
         })
       });
-
       console.log("Response status:", response.status);
+
       search_data = await response.json();
       console.log("Response data:", search_data);
-
     } catch (err) {
       console.error("Search request failed.", err);
-    } 
+    } finally {
+      setIsSearching(false);
+    }
   }
   return (
     <div className="container">

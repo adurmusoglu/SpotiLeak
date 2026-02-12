@@ -17,7 +17,7 @@ class YTResult(BaseModel):
     # will need to add a way to send the mp3 file itself
 
 class SearchResponse(BaseModel):
-    success: bool
+    success: bool = False
     results: List[YTResult] = []
     current_index: int = 0
     total_results: int = 0

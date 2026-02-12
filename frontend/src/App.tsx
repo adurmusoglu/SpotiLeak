@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
+import "./types/api.tsx";
 import TypingText from "./components/TypingText.tsx";
 import SearchInput from "./components/SearchInput.tsx";
 
 
 function App(): React.JSX.Element {
   console.log("App component is rendering");
+  // Handles data search queries
   const [artistQuery, setArtistQuery] = useState('');
   const [songQuery, setSongQuery] = useState('');
+  let search_data: any = null;
+  let query_id: number = 0;     // Idempotent API requests
 
+  // Customizable hero text with animation
   const heroLines: string[] = [
     "Ever heard a song on social media that wasn't on Spotify?",
     "Listen to all the songs you love with SpotiLeak!"
@@ -30,17 +35,19 @@ function App(): React.JSX.Element {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          song: songQuery.trim(),
           artist: artistQuery.trim(),
-          song: songQuery.trim()
+          total_results: 10,
+          query_id: query_id++
         })
       });
 
       console.log("Response status:", response.status);
-      const data = await response.json();
-      console.log("Response data:", data);
+      search_data = await response.json();
+      console.log("Response data:", search_data);
 
     } catch (err) {
-      console.error("Search request failed", err);
+      console.error("Search request failed.", err);
     } 
   }
   return (
@@ -51,8 +58,8 @@ function App(): React.JSX.Element {
       </div> 
 
       <div className="search-container">
-        <SearchInput type="artist" value={artistQuery} onChange={setArtistQuery} />
         <SearchInput type="song" value={songQuery} onChange={setSongQuery} />
+        <SearchInput type="artist" value={artistQuery} onChange={setArtistQuery} />
         <button className="btn-search" onClick={handleSearch}>Search</button>
       </div>
       

@@ -7,9 +7,9 @@ echo "Starting backend..."
 uvicorn backend.main:app --reload --port 8000 &
 BACKEND_PID=$!
 
-# Start frontend
-echo "Starting frontend..."
-cd frontend && npm start &
+# Start Electron app (React + Electron)
+echo "Starting Electron app..."
+cd frontend && npm run dev &
 FRONTEND_PID=$!
 
 # Function to cleanup background processes
@@ -25,7 +25,7 @@ trap cleanup SIGINT
 # Wait for user to stop
 echo "SpotiLeak is running!"
 echo "Backend: http://localhost:8000"
-echo "Frontend: http://localhost:3000"
+echo "Electron app launching..."
 echo "Press CTRL+C to stop"
 
 wait

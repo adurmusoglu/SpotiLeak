@@ -2,6 +2,7 @@
   "name": "spotileak-frontend",
   "main": "public/electron.js",
   "scripts": {
+    "start": "BROWSER=none react-scripts start",
     "electron": "electron .",
     "react-start": "BROWSER=none react-scripts start",
     "dev": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && npm run electron\""

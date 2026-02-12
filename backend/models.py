@@ -3,7 +3,7 @@ from typing import Optional, List
 
 class SearchRequest(BaseModel):
     song: str
-    artist: Optional[str] = ""
+    artist: Optional[str] = None
     total_results: int
     query_id: int
 

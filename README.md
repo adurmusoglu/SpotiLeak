@@ -25,12 +25,7 @@ cd frontend && npm install
 
 ## Usage
 
-**Option 1 - npm script:**
-```bash
-npm run dev
-```
-
-**Option 2 - shell script:**
+**Option 1 - shell script:**
 ```bash
 ./start.sh
 ```
@@ -39,4 +34,4 @@ Both start backend (http://localhost:8000) and frontend (http://localhost:3000)
 
 ## Tech Stack
 - **Frontend:** Electron + React + TypeScript
-- **Backend:** Python + FastAPI + yt-dlp
+- **Backend:** Python + FastAPI + yt-dlp + mutagen

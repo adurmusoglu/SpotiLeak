@@ -19,7 +19,9 @@ def search(req: SearchRequest) -> SearchResponse:
                             total_results=req.total_results,
                             query_id=req.query_id)
 
-    results = search_youtube(cleaned_req)
+    # search_youtube is included in services.search_service
+    # returns results from YT that'll be processed in the frontend
+    results = search_youtube(cleaned_req) or []
     return SearchResponse(success=True, 
                           results=results,
                           current_index=0,

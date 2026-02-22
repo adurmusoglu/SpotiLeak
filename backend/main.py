@@ -6,7 +6,7 @@ from services.search_service import search_youtube
 app = FastAPI()
 
 # Security for receiving queries
-app.addMiddleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
     allow_credentials=True,

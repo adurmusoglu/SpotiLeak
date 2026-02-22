@@ -4,7 +4,9 @@ echo "Starting SpotiLeak..."
 
 # Start backend in background
 echo "Starting backend..."
-uvicorn backend.main:app --reload --port 8000 &
+cd backend
+uvicorn main:app --reload --port 8000 &
+cd ..
 BACKEND_PID=$!
 
 # Start Electron app (React + Electron)

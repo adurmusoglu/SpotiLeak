@@ -11,6 +11,7 @@ function App(): React.JSX.Element {
   const [artistQuery, setArtistQuery] = useState('');
   const [songQuery, setSongQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const [queryId, setQueryId] = useState(0);
   let search_data: any = null;
   let query_id: number = 0;  
 
@@ -42,9 +43,10 @@ function App(): React.JSX.Element {
           song: songQuery.trim(),
           artist: artistQuery.trim(),
           total_results: 10,
-          query_id: query_id++
+          query_id: queryId
         })
       });
+      setQueryId(queryId + 1);
       console.log("Response status:", response.status);
 
       search_data = await response.json();
